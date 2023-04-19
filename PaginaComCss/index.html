@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <head></head>
+    <div class="div-white"></div>
+    <section>
+        <div class="content">
+            <div id="imagens">
+                <div >
+                    <img class="img"  src="imagens/15068-a-idade-de-gato-pode-ser-calculada-de-fo-200x200-1.jpg" alt="">
+                    <h3>Gato</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eos laboriosam culpa aliquam
+                        explicabo molestiae fugiat maiores nam iure quasi. Excepturi, voluptatibus reiciendis! Quasi
+                        recusandae sit odio facilis, tempore quisquam?</p>
+                    <a href="#">LEARN MORE</a>
+                </div>
+                <div>
+                    <img class="img" src="imagens/16281-as-racas-de-gatos-pequenos-nos-fazem-apa-200x200-2.webp" alt="">
+                    <h3>Gato</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eos laboriosam culpa aliquam
+                        explicabo molestiae fugiat maiores nam iure quasi. Excepturi, voluptatibus reiciendis! Quasi
+                        recusandae sit odio facilis, tempore quisquam?</p>
+                    <a href="#">LEARN MORE</a>
+                </div>
+                <div>
+                    <img class="img" src="imagens/Cassio-Jose-Schreiner-200x200.jpeg" alt="">
+                    <h3>Pessoa</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eos laboriosam culpa aliquam
+                        explicabo molestiae fugiat maiores nam iure quasi. Excepturi, voluptatibus reiciendis! Quasi
+                        recusandae sit odio facilis, tempore quisquam?</p>
+                    <a href="#">LEARN MORE</a>
+                </div>
+
+            </div>
+            <div id="div2">
+                <p>imagens do Google</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <p>Direitos reservados a Vanessa</p>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            $(".img").hover(
+                function () { // esta funcao eh executada quando o pont. do mouse entra na região da img.
+                    $(this).animate({
+                        width: '350', // a largura da img. será aumentada gradualmente até 500 pixels
+                        height: '350px' // a altura da img. será aumentada gradualmente até 400 pixels
+                    });
+                },
+                function () { // esta funcao eh executada quando o pont. do mouse deixa a região da img.
+                    $(this).animate({
+                        width: '300px',
+                        height: '300px'
+                    });
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>

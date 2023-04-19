@@ -1,0 +1,51 @@
+#imagens, #div2{
+    color: white;
+    display: flex;
+    background-color: rgba(252, 43, 6, 0.927);
+    flex-direction: row;
+    justify-content: center;
+}
+
+.div-white{
+    height: 150px;
+}
+
+#imagens > div{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px 25px;
+    text-align: center;
+    margin-top: -100px;
+}
+
+img{
+    border-radius: 50%;
+    border: 10px solid white;
+}
+
+a{
+    color: white;
+}
+hr{
+    width: 100%;
+}
+
+p{
+    font-size: 2vh;
+}
+
+footer{
+    background-color: rgb(57, 52, 52);
+    color: azure;
+    display: flex;
+    text-align: center; 
+}
+
+footer > div, #div2{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;}
+
