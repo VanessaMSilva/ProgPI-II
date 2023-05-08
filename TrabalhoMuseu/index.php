@@ -61,17 +61,20 @@ session_start();
                                 <div class="box">
                                     <form action="login.php" method="POST">
                                         <div class="field">
-                                            <div class="control">
-                                                <input name="usuario" name="text" class="input is-large" placeholder="Seu usuário" autofocus="">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Nome usuario</label>
+                                                <input type="text" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu e-mail com mais ninguém.</small>
                                             </div>
                                         </div>
 
                                         <div class="field">
-                                            <div class="control">
-                                                <input name="senha" class="input is-large" type="password" placeholder="Sua senha">
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Senha</label>
+                                                <input type="password" name="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                                             </div>
                                         </div>
-                                        <button type="submit" class="button is-block is-link is-large is-fullwidth">Entrar</button>
+                                        <button type="submit" class="btn btn-primary">Login</button>
                                     </form>
                                 </div>
                             </div>
@@ -81,9 +84,10 @@ session_start();
             </div>
         </div>
         <div><button data-target="#meuModal" data-toggle="modal">Ver login</button>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-mensagem">
-Exibir mensagem
-</button></div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modal-mensagem">
+                Exibir mensagem
+            </button>
+        </div>
 
     </section>
 </body>
