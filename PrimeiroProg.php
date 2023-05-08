@@ -59,12 +59,46 @@
 
         $mycar = new Car("preto","Volvo");
         echo $mycar->mensagem();
-        echo "<br>"
+        echo "<br>";
         $mycar = new Car("red","Toyota");
         echo $mycar->mensagem();
 
+        //Atividade string
+        echo "<br>";
+        echo "Tamanho mensagem ", strlen($mycar->mensagem());
+        echo "<br>";
+        echo "Numero de palavras ", str_word_count($mycar->mensagem());
+        echo "<br>";
+        echo "Inverter mensagem ", strrev($mycar->mensagem());
+        echo "<br>";
+        echo "Procurar palavra ", strpos($mycar->mensagem(),"car");
+        echo "<br>";
+        echo "Substituir mensagem ", str_replace("car","argafgigk",$mycar->mensagem());
+        print "<h1>Bom dia!!!</h1>";
 
+        $x = 0;
 
+        for($x=0; $x<=30; $x+=10){
+            echo "The numbers is: $x <br>";
+        }
+        $ver = false;
+        echo '<table>';
+        for($x=0; $x<3; $x+=1){
+            echo '<tr>';
+            for($i=0; $i<3; $i+=1){
+                if($ver){
+                    echo '<td style="background-color:#bdd6ee; padding: 50px"></td>';
+                    $ver = false;
+                }
+                else{
+                    echo '<td style="background-color:#9bc2e4; padding: 50px;"></td>';
+                    
+                    $ver = true;
+                }
+            }
+            echo "</tr>";
+        }
+        echo "</table>"
 
     ?>
 </body>

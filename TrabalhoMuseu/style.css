@@ -1,0 +1,114 @@
+body{
+    background-color: white;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+
+header{
+    height:60px;
+    background-color: #fff;
+}
+/*-------CABECALHO----------*/
+
+.Flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo a{
+    text-decoration: none;
+    font-size: 2em;
+    text-align: center;
+    color: black;
+}
+
+
+#check{ /**/
+    display: none;
+}
+
+#label{ /*img de dois tracinhos*/
+    font-size: 3em;
+    padding-right: 15px;
+}
+nav ul{
+    list-style: none; /*Tira as bolinhas*/
+    background-color: #C1AC9C;
+    height:  100vh;/*vh define a altura do menu para o tamanho tot da tela*/
+    position: fixed;/*Desloca uma camada acima dos elemetos não interagindo com ele*/
+    top: 60px;/*Corrigir o ul*/
+    right: -120%;/*Esconde o menu*/
+    width: 100%;/*Faz o menu aparecer*/
+    transition: all 0.5s;/*Faza transição de 0.5 segundo*/
+}
+
+#check:checked~ul{ /*checked esta relacionada a checkbox que esta vinculada a label*/
+    right: 0;
+}
+
+nav ul li{
+    border-bottom: 1px solid rgb(128, 98, 98);
+    padding: 20px;
+}
+
+nav ul li a{
+    text-decoration: none;/*Remove sublinhado*/
+    color: black;
+    text-transform: uppercase;
+}
+
+/* Smartphone Portrait*/
+/*Cabeçalho*/
+header{
+    height:60px;
+    background-color: #fff;
+}
+/*Formulario*/
+#formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 226, 226);
+    color: white;
+}
+
+#formulario.hero-body > div{
+    width: 600px;
+    padding: 25px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right,purple,rgb(234, 236, 241));
+    border-radius: 25px;
+}
+
+/*---------CABECALHO-----------1200PX*/
+@media(min-width: 1020px){
+    .Conteiner{
+        max-width: 140px;
+    }
+    header{
+        height: 60px;
+    }
+    #label{
+        display: none;
+    }
+    nav ul{
+        position: static;
+        height: auto;/*Altura em*/
+        background-color: transparent;/*Remove a cor*/
+        margin-top: 0px;
+    }
+    nav ul li{
+        float: left;
+        border: 0;
+    }
+    nav ul li a:hover {
+        color: rgb(128, 98, 98);
+        text-decoration: underline;
+    }
+}
