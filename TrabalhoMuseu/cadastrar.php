@@ -14,7 +14,6 @@
     if($row['total']==1){
         $_SESSION['usuario_existe'] = TRUE;
         header('Location: index.php ');
-        echo "<script>alert('Erro cadastro')</script>";
         exit;
     }
 

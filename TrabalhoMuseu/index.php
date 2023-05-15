@@ -51,7 +51,7 @@ session_start();
                 </li>
             </ul>
             <div id="direita" class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="login" data-target="#meuModal" data-toggle="modal" style="margin-right: 20px;" >Login</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id="login" data-target="#meuModal" data-toggle="modal" style="margin-right: 20px;">Login</button>
 
                 <button class="btn btn-outline-success my-2 my-sm-0" id="cadastro" data-target="#meuModalCadastro" data-toggle="modal">Cadastro</button>
             </div>
@@ -75,9 +75,9 @@ session_start();
                                 <?php
                                 if (isset($_SESSION['nao_autenticado'])) :
                                 ?>
-                                    <div class="notification is-danger">
-                                        <p>ERRO: Usuário ou senha inválidos.</p>
-                                    </div>
+                                    <script>
+                                        alert("ERRO: Usuário ou senha inválidos.");
+                                    </script>
                                 <?php
                                 endif;
                                 unset($_SESSION['nao_autenticado']);
@@ -122,6 +122,26 @@ session_start();
                     <div class="modal-body">
                         <div class="container has-text-centered">
                             <div class="column is-4 is-offset-4">
+                                <?php
+                                if (isset($_SESSION['status_cadastro'])) :
+                                ?>
+                                    <script>
+                                        alert("Cadastrado com sucesso.");
+                                    </script>
+                                <?php
+                                    endif;
+                                    unset($_SESSION['status_cadastro']);
+                                ?>
+                                <?php
+                                if (isset($_SESSION['usuario_existe'])) :
+                                ?>
+                                    <script>
+                                        alert("ERRO: Cadastro Usuário ou senha inválidos.");
+                                    </script>
+                                <?php
+                                    endif;
+                                    unset($_SESSION['usuario_existe']);
+                                ?>
                                 <div class="box">
                                     <form action="cadastrar.php" method="POST">
                                         <div class="field">
@@ -155,6 +175,19 @@ session_start();
             </div>
         </div>
     </section>
+    <?php
+    if (isset($_SESSION['nao_autenticado'])) :
+    ?>
+        <div class="notification is-danger">
+            <p>ERRO: Usuário ou senha inválidos.</p>
+        </div>
+        <script>
+            alert("jrbf");
+        </script>
+    <?php
+    endif;
+    unset($_SESSION['nao_autenticado']);
+    ?>
 </body>
 
 </html>

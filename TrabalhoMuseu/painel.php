@@ -63,6 +63,24 @@ include('verifica_login.php');
             </div>
         </div>
     </nav>
+
+    <section>
+        <div class="container">
+            <?php
+            include("conexao.php");
+
+            // fazer a consulta ao banco de dados
+            $resultado = $mysqli->query("SELECT * FROM mensagens");
+
+            // exibir as mensagens dos visitantes em uma lista
+            echo '<ul>';
+            while ($row = $resultado->fetch_assoc()) {
+                echo '<li><strong>' . $row['nome'] . ':</strong> ' . $row['mensagem'] . '</li>';
+            }
+            echo '</ul>';
+            ?>
+        </div>
+    </section>
 </body>
 
 </html>
