@@ -24,7 +24,6 @@
     }
 
     $conexao->close();
-
     header('Location: painel.php');
-    exit;
+    exit();
 ?>

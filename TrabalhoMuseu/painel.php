@@ -66,7 +66,7 @@ include('verifica_login.php');
 
     <section>
         <div class="container">
-            <?php
+            <?php /*
             include("conexao.php");
 
             // fazer a consulta ao banco de dados
@@ -77,7 +77,7 @@ include('verifica_login.php');
             while ($row = $resultado->fetch_assoc()) {
                 echo '<li><strong>' . $row['nome'] . ':</strong> ' . $row['mensagem'] . '</li>';
             }
-            echo '</ul>';
+            echo '</ul>';*/
             ?>
         </div>
     </section>
