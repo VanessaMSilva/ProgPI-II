@@ -7,7 +7,6 @@
     $senha = mysqli_real_escape_string($conexao, $_POST['senha1']);
 
     $sql = "select count(*) as total from usuario where usuario = '$usuario'";
-    $sql = "select count(*) as total from usuario where usuario = '$usuario'";
     $result = mysqli_query($conexao,$sql);
     $row = mysqli_fetch_assoc($result);
 
