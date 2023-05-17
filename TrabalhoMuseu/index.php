@@ -1,5 +1,9 @@
 <?php
 session_start();
+include("conexao.php");
+$consulta = "SELECT * FROM mensagens;";
+$result = mysqli_query($conexao, $consulta);
+
 ?>
 
 <!DOCTYPE html>
@@ -188,6 +192,20 @@ session_start();
     endif;
     unset($_SESSION['nao_autenticado']);
     ?>
+    <section>
+    <?php while ($dado = $result->fetch_array()) {
+                ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <?php echo $dado["data"]; ?>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $dado["nome"]; ?></h5>
+                            <p class="card-text"><?php echo $dado["Mensagem"]; ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+    </section>
 </body>
 
 </html>

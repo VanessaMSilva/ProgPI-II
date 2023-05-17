@@ -1,5 +1,8 @@
 <?php
 include('verifica_login.php');
+include("conexao.php");
+$consulta = "SELECT * FROM mensagens;";
+$result = mysqli_query($conexao, $consulta);
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +58,6 @@ include('verifica_login.php');
                 if (isset($_SESSION['usuario'])) {
                     echo "<a class='nav-link disabled' href='#'>", $_SESSION['usuario'], "</a>";
                 }
-                if (isset($_SESSION['usuario1'])) {
-                    echo "<a class='nav-link disabled' href='#'>", $_SESSION['usuario'], "</a>";
-                }
                 ?>
                 <a class="btn btn-outline-success my-2 my-sm-0" href="logout.php">Logout</a>
             </div>
@@ -80,6 +80,38 @@ include('verifica_login.php');
             echo '</ul>';*/
             ?>
         </div>
+
+        <section>
+            <div class="container">
+                <div class="mensagem">
+                    <form class="validated">
+                        <div class="mb-3">
+                            <label for="Textarea" class="form-label"><?php echo $_SESSION['usuario'];?></label>
+                            <textarea class="form-control" id="Textarea" placeholder="Deixe sua mensagem aqui" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter a message in the textarea.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <?php while ($dado = $result->fetch_array()) {
+                ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <?php echo $dado["data"]; ?>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $dado["nome"]; ?></h5>
+                            <p class="card-text"><?php echo $dado["Mensagem"]; ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
     </section>
 </body>
 
