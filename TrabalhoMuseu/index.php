@@ -3,7 +3,6 @@ session_start();
 include("conexao.php");
 $consulta = "SELECT * FROM mensagens;";
 $result = mysqli_query($conexao, $consulta);
-
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +54,14 @@ $result = mysqli_query($conexao, $consulta);
                 </li>
             </ul>
             <div id="direita" class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="login" data-target="#meuModal" data-toggle="modal" style="margin-right: 20px;">Login</button>
-
-                <button class="btn btn-outline-success my-2 my-sm-0" id="cadastro" data-target="#meuModalCadastro" data-toggle="modal">Cadastro</button>
+                <?php
+                if (isset($_SESSION['usuario'])) {
+                    echo '<a class="nav-link disabled" href="#">', $_SESSION["usuario"], '</a><a class="btn btn-outline-success my-2 my-sm-0" href="logout.php">Logout</a>';
+                } else {
+                    echo '
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="login" data-target="#meuModal" data-toggle="modal" style="margin-right: 20px;">Login</button><button class="btn btn-outline-success my-2 my-sm-0" id="cadastro" data-target="#meuModalCadastro" data-toggle="modal">Cadastro</button>';
+                }
+                ?>
             </div>
         </div>
     </nav>
@@ -76,6 +80,7 @@ $result = mysqli_query($conexao, $consulta);
                     <div class="modal-body">
                         <div class="container has-text-centered">
                             <div class="column is-4 is-offset-4">
+
                                 <?php
                                 if (isset($_SESSION['nao_autenticado'])) :
                                 ?>
@@ -133,8 +138,8 @@ $result = mysqli_query($conexao, $consulta);
                                         alert("Cadastrado com sucesso.");
                                     </script>
                                 <?php
-                                    endif;
-                                    unset($_SESSION['status_cadastro']);
+                                endif;
+                                unset($_SESSION['status_cadastro']);
                                 ?>
                                 <?php
                                 if (isset($_SESSION['usuario_existe'])) :
@@ -143,8 +148,8 @@ $result = mysqli_query($conexao, $consulta);
                                         alert("ERRO: Cadastro Usuário ou senha inválidos.");
                                     </script>
                                 <?php
-                                    endif;
-                                    unset($_SESSION['usuario_existe']);
+                                endif;
+                                unset($_SESSION['usuario_existe']);
                                 ?>
                                 <div class="box">
                                     <form action="cadastrar.php" method="POST">
@@ -193,7 +198,31 @@ $result = mysqli_query($conexao, $consulta);
     unset($_SESSION['nao_autenticado']);
     ?>
     <section>
-    <?php while ($dado = $result->fetch_array()) {
+        <div class="container">
+            <?php
+            if (isset($_SESSION["usuario"])) :
+            ?>
+            
+                <div class="mensagem">
+                    <form class="validated" action="mensagem.php" method="POST">
+                        <div class="mb-3">
+                            <label for="Textarea" class="form-label">
+                            <input type="text" name="nome1" class="form-control" id="exampleInputnome" aria-describedby="emailHelp" value="<?php 
+                                echo $_SESSION['usuario'];
+                            ?>" disabled=""></label>
+                            <textarea class="form-control" id="Textarea" name="textarea" placeholder="Deixe sua mensagem aqui" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter a message in the textarea.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary" type="submit">Adicionar</button>
+                        </div>
+                    </form>
+
+
+                <?php endif; ?>
+                <?php while ($dado = $result->fetch_array()) {
                 ?>
                     <div class="card">
                         <div class="card-header">
@@ -205,6 +234,7 @@ $result = mysqli_query($conexao, $consulta);
                         </div>
                     </div>
                 <?php } ?>
+                </div>
     </section>
 </body>
 

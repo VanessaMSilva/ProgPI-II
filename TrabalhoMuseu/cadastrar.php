@@ -20,9 +20,10 @@
 
     if($conexao->query($sql)===true){
         $_SESSION['status_cadastro'] = true;
+        $_SESSION['usuario'] = $usuario;
     }
 
     $conexao->close();
-    header('Location: painel.php');
+    header('Location: index.php');
     exit();
 ?>
