@@ -1,0 +1,56 @@
+#img{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    
+}
+body{
+    background-color: rgba(0, 0, 0, 0.792);
+}
+.imagem{
+    width: 50vh;
+    height: 50vh;
+    margin: 10vh;
+    border-radius: 25%;
+}
+
+.container{
+    background-color: rgba(0, 0, 0, 0.351);
+    margin-top: 10vh;
+}
+
+.d-flex{
+    color: white;
+}
+
+#cabecalho{
+    background-image: url('imagens/mis.jpg');
+    height: 50vh;
+    color: white;
+}
+
+#cabecalho > div {
+    align-items: center;
+}
+
+nav >div, a{
+    color: white;
+    border-color: white;
+}
+
+.mensagem > div{
+    margin: 10vh;
+}
+
+.modal-content{
+    background-color: rgba(0, 0, 0, 0.792);
+    color: white;
+}
+
+
+
+
+.form-control{
+    background-color: rgb(242, 240, 240);
+    color: white;
+}
