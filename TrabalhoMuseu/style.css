@@ -7,6 +7,7 @@
 body{
     background-color: rgba(0, 0, 0, 0.792);
 }
+
 .imagem{
     width: 50vh;
     height: 50vh;
@@ -19,9 +20,7 @@ body{
     margin-top: 10vh;
 }
 
-.d-flex{
-    color: white;
-}
+
 
 #cabecalho{
     background-image: url('imagens/mis.jpg');
@@ -33,6 +32,10 @@ body{
     align-items: center;
 }
 
+.d-lg-flex{
+    color: white;
+}
+
 nav >div, a{
     color: white;
     border-color: white;
@@ -42,15 +45,22 @@ nav >div, a{
     margin: 10vh;
 }
 
+.mensagem{
+    padding: 20px;
+}
+
 .modal-content{
     background-color: rgba(0, 0, 0, 0.792);
     color: white;
 }
 
-
-
-
 .form-control{
     background-color: rgb(242, 240, 240);
+    color: white;
+}
+
+.d-flex{
+    padding-top: 50px;
+    background-color: rgba(0, 0, 0, 0.351);
     color: white;
 }

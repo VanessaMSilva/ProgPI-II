@@ -37,7 +37,7 @@ $result = mysqli_query($conexao, $consulta);
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#quadros">Obras</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,7 +97,7 @@ $result = mysqli_query($conexao, $consulta);
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Nome usuario</label>
-                                                <input type="text" name="usuario" class = "form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                <input type="text" name="usuario" class = "form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter usuario" required>
                                                 <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu e-mail com mais ninguém.</small>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@ $result = mysqli_query($conexao, $consulta);
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Senha</label>
-                                                <input type="password" name="senha" class = "form-control" id="exampleInputPassword1" placeholder="Senha">
+                                                <input type="password" name="senha" class = "form-control" id="exampleInputPassword1" placeholder="Senha" required>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Login</button>
@@ -145,7 +145,7 @@ $result = mysqli_query($conexao, $consulta);
                                 if (isset($_SESSION['usuario_existe'])) :
                                 ?>
                                     <script>
-                                        alert("ERRO: Cadastro Usuário ou senha inválidos.");
+                                        alert("ERRO: Usuario já cadastrado.");
                                     </script>
                                 <?php
                                 endif;
@@ -156,13 +156,13 @@ $result = mysqli_query($conexao, $consulta);
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputnome">Nome</label>
-                                                <input type="text" name="nome" class="form-control" id="exampleInputnome" aria-describedby="Nome" placeholder="Enter nome">
+                                                <input type="text" name="nome" class="form-control" id="exampleInputnome" aria-describedby="Nome" placeholder="Enter nome" required>
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail">Nome usuario</label>
-                                                <input type="text" name="usuario1" class="form-control" id="exampleInputEmail" aria-describedby="NomeUsuario" placeholder="Enter usuario">
+                                                <input type="text" name="usuario1" class="form-control" id="exampleInputEmail" aria-describedby="NomeUsuario" placeholder="Enter usuario" required>
                                             </div>
                                         </div>
 
@@ -170,7 +170,7 @@ $result = mysqli_query($conexao, $consulta);
                                             <div class="field">
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword">Senha</label>
-                                                    <input type="password" name="senha1" class="form-control" id="exampleInputPassword" placeholder="Senha">
+                                                    <input type="password" name="senha1" class="form-control" id="exampleInputPassword" placeholder="Senha" required>
                                                 </div>
                                             </div>
 
@@ -204,13 +204,13 @@ $result = mysqli_query($conexao, $consulta);
             </div>
         </div>
     </section>
-    <section>
+    <section id="quadros">
         <div class="container">
-            <div class="d-flex align-items-center">
+            <div class="d-lg-flex align-items-center">
                 <div><img class="imagem" src="imagens/Grito.jpg" alt="Imagem"></div>
                 <div>
                     <h1>Quadro grito</h1>
-                    <h2>criado por Van Gov</h2>
+                    <h2>criado por Van Gogh</h2>
                     <p>O quadro "O Grito" é uma icônica obra de arte do pintor norueguês Edvard Munch, criada em 1893. É considerada uma das pinturas mais famosas e influentes do movimento expressionista.
 
                         A pintura retrata uma figura solitária em um cenário desolado e surreal. No centro do quadro, há uma figura andrógina com uma expressão de profundo desespero. Seu rosto é contorcido em uma máscara de angústia, com a boca aberta em um grito silencioso. As mãos da figura estão posicionadas nos ouvidos, como se tentasse bloquear algum som aterrorizante.
@@ -223,13 +223,23 @@ $result = mysqli_query($conexao, $consulta);
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <div class="d-lg-flex align-items-center">
+                <div>
+                    <h1>Quadro noite estrelada</h1>
+                    <h2>criado por Van Gogh</h2>
+                    <p>Uma das pinturas mais famosas que retrata uma noite estrelada é "A Noite Estrelada" (em inglês, "The Starry Night"), do pintor pós-impressionista Vincent van Gogh. Nessa obra, van Gogh retrata um céu noturno com um turbilhão de estrelas, combinando tons de azul, amarelo e branco para criar uma atmosfera vibrante e emocional.</p>
+                </div>
+                <div><img class="imagem" src="imagens/van-gogh-noite-estrelada.jpg" alt="Imagem"></div>
+            </div>
+        </div>
     </section>
     <section>
         <div class="container mensagem">
             <?php
             if (isset($_SESSION["usuario"])) :
             ?>
-
                 <div>
                     <form class="validated" action="mensagem.php" method="POST">
                         <div class="mb-3">
@@ -246,8 +256,9 @@ $result = mysqli_query($conexao, $consulta);
                     </form>
 
 
-                <?php endif; ?>
+                
                 </div>
+                <?php endif; ?>
                 <?php while ($dado = $result->fetch_array()) {
                 ?>
                     <div class="card">
@@ -263,7 +274,7 @@ $result = mysqli_query($conexao, $consulta);
         </div>
     </section>
     <footer>
-        <div class="d-flex align-items-center">
+        <div class="d-flex justify-content-around">
             <div>
                 <h3>Museu</h3>
                 <p>Horario: 09:00 - 18:00</p>
