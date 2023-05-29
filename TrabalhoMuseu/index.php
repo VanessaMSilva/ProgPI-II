@@ -253,20 +253,14 @@ $result = mysqli_query($conexao, $consulta);
                         <div class="mb-3">
                             <button class="btn btn-primary" type="submit">Adicionar</button>
                         </div>
-                    </form>
-
-
-                
+                    </form>                
                 </div>
                 <?php endif; ?>
                 <?php while ($dado = $result->fetch_array()) {
                 ?>
                     <div class="card">
-                        <div class="card-header">
-                            <?php echo $dado["data"]; ?>
-                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $dado["nome"]; ?></h5>
+                            <h5 class="card-title"><?php echo $dado["nome"]; ?><?php echo " ",$dado["data"]; ?></h5>
                             <p class="card-text"><?php echo $dado["Mensagem"]; ?></p>
                         </div>
                     </div>

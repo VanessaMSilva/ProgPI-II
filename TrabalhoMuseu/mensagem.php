@@ -9,7 +9,7 @@ if(empty($_POST['textarea'])) {
 
 $usuario = mysqli_real_escape_string($conexao, $_SESSION['usuario']);
 $mens = mysqli_real_escape_string($conexao, $_POST['textarea']);
-
+$nome = $_SESSION['usuario'];
 $sql = "INSERT INTO mensagens(nome, Mensagem, data) VALUES('$nome','$mens',NOW())";
 
 
