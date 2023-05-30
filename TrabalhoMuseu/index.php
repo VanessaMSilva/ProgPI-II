@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("conexao.php");
-$consulta = "SELECT * FROM mensagens;";
+$consulta = "SELECT id,Mensagem, data,nome FROM mensagens;";
 $result = mysqli_query($conexao, $consulta);
 ?>
 
@@ -44,7 +44,7 @@ $result = mysqli_query($conexao, $consulta);
                         Dropdown
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#grito">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
@@ -97,7 +97,7 @@ $result = mysqli_query($conexao, $consulta);
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Nome usuario</label>
-                                                <input type="text" name="usuario" class = "form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter usuario" required>
+                                                <input type="text" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter usuario" required>
                                                 <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu e-mail com mais ninguém.</small>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@ $result = mysqli_query($conexao, $consulta);
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Senha</label>
-                                                <input type="password" name="senha" class = "form-control" id="exampleInputPassword1" placeholder="Senha" required>
+                                                <input type="password" name="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha" required>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Login</button>
@@ -206,7 +206,7 @@ $result = mysqli_query($conexao, $consulta);
     </section>
     <section id="quadros">
         <div class="container">
-            <div class="d-lg-flex align-items-center">
+            <div class="d-lg-flex align-items-center" id="NoiteEstrelada">
                 <div><img class="imagem" src="imagens/Grito.jpg" alt="Imagem"></div>
                 <div>
                     <h1>Quadro grito</h1>
@@ -224,7 +224,7 @@ $result = mysqli_query($conexao, $consulta);
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="grito">
             <div class="d-lg-flex align-items-center">
                 <div>
                     <h1>Quadro noite estrelada</h1>
@@ -244,7 +244,7 @@ $result = mysqli_query($conexao, $consulta);
                     <form class="validated" action="mensagem.php" method="POST">
                         <div class="mb-3">
                             <label for="Textarea" class="form-label">
-                                <input type="text" name="nome1" class="form-control" id="exampleInputnome" aria-describedby="emailHelp" value="<?php echo $_SESSION['usuario'];?>" disabled=""></label>
+                                <input type="text" name="nome1" class="form-control" id="exampleInputnome" aria-describedby="emailHelp" value="<?php echo $_SESSION['usuario']; ?>" disabled=""></label>
                             <textarea class="form-control" id="Textarea" name="textarea" placeholder="Deixe sua mensagem aqui" required></textarea>
                             <div class="invalid-feedback">
                                 Please enter a message in the textarea.
@@ -253,18 +253,27 @@ $result = mysqli_query($conexao, $consulta);
                         <div class="mb-3">
                             <button class="btn btn-primary" type="submit">Adicionar</button>
                         </div>
-                    </form>                
+                    </form>
                 </div>
-                <?php endif; ?>
-                <?php while ($dado = $result->fetch_array()) {
-                ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $dado["nome"]; ?><?php echo " ",$dado["data"]; ?></h5>
-                            <p class="card-text"><?php echo $dado["Mensagem"]; ?></p>
+            <?php endif; ?>
+            <?php while ($dado = $result->fetch_array()) {
+            ?>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right"><?php
+                                                    $dateString = $dado["data"];
+                                                    $timezone = new DateTimeZone('America/Sao_Paulo');
+                                                    $datetime = new DateTime($dateString, $timezone);
+                                                    $dateString = $datetime->format('d/m/Y H:i:s');
+                                                    echo " ", $dateString; ?></div>
+                        <div>
+                            <h5 class="card-title"><?php echo $dado["nome"]; ?></h5>
                         </div>
+
+                        <p class="card-text"><?php echo $dado["Mensagem"]; ?></p>
                     </div>
-                <?php } ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
     <footer>

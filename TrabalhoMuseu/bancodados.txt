@@ -1,0 +1,4 @@
+senha: 147852309Va_
+nomebd: id20834060_login
+usuario: id20834060_root
+localhost: localhost

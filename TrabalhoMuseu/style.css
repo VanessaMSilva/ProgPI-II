@@ -69,3 +69,36 @@ nav >div, a{
 footer{
     margin-top: 20vh;
 }
+
+/*Smartphone Landscape(virado)*/
+@media only screen and (max-width: 576px){
+    .imagem{
+        width: 40vh;
+        height: 40vh;
+        margin: 10vh;
+        border-radius: 25%;
+    }
+}
+
+
+
+/*Tablet Landscape( de lado)*/
+@media (max-width: 992px){
+    .imagem{
+        width: 35vh;
+        height: 35vh;
+        margin: 10vh;
+        border-radius: 25%;
+    }
+   
+}
+
+/*Pc                       */
+@media(max-width: 500px){
+    .imagem{
+        width: 26vh;
+        height: 26vh;
+        margin: 10vh;
+        border-radius: 25%;
+    }
+}
