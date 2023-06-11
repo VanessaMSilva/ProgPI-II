@@ -16,7 +16,7 @@
         exit;
     }
 
-    $sql = "INSERT INTO usuario(nome, usuario,senha,data_cadastro) VALUES('$nome','$usuario',md5('{$senha}'),NOW())";
+    $sql = "INSERT INTO usuario(nome, usuario,senha,data_cadastro,usuario_gerente) VALUES('$nome','$usuario',md5('{$senha}'),NOW(),false)";
 
     if($conexao->query($sql)===true){
         $_SESSION['status_cadastro'] = true;

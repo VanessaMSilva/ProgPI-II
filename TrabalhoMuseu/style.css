@@ -55,16 +55,16 @@ nav >div, a{
     color: white;
 }
 
-.form-control{
-    background-color: rgb(242, 240, 240);
-    color: black;
-}
+
 
 .d-flex{
     padding-top: 50px;
     background-color: rgba(0, 0, 0, 0.351);
     color: white;
 }
+
+
+
 
 footer{
     margin-top: 20vh;
@@ -101,4 +101,9 @@ footer{
         margin: 10vh;
         border-radius: 25%;
     }
+}
+
+.form-control{
+    background-color: rgba(255, 255, 255, 0.169);
+    color: white;
 }
