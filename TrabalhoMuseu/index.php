@@ -5,7 +5,7 @@ include('cabecalho.php');
 $consulta = "SELECT id,Mensagem, data,nome FROM mensagens;";
 $result = mysqli_query($conexao, $consulta);
 
-$consultaMuseu = "SELECT id, titulo, texto, imagem FROM items;";
+$consultaMuseu = "SELECT id, titulo, texto, imagem, autor FROM items;";
 $result2 = mysqli_query($conexao, $consultaMuseu);
 ?>
 
@@ -40,6 +40,34 @@ $result2 = mysqli_query($conexao, $consultaMuseu);
             <div><img class="imagem" src="imagens/van-gogh-noite-estrelada.jpg" alt="Imagem"></div>
         </div>
     </div>
+
+
+    <?php while ($dado = $result2->fetch_array()) {
+    ?>
+        <div class="container">
+        <?php if($gerente){?>
+            <div class="delete">
+                <form action="ImagemDeletar.php" method="POST">
+                    <input type="hidden" name="item_id" value="<?php echo  $dado['id'];?>">
+                    <button type="submit" class="buttonImg" >Deletar</button>
+                </form>
+            </div>
+           
+        <?php }?>
+
+            <div class="d-lg-flex align-items-center">
+                <div>
+                    <h1><?php echo $dado["titulo"]; ?></h1>
+                    <h2><?php echo $dado["autor"]; ?></h2>
+                    <p><?php echo $dado["texto"]; ?></p>
+                </div>
+
+                <div><img class="imagem" src="exibir_imagem.php?id=<?php echo $dado["id"] ?>" alt="Imagem"></div>
+            </div>
+        </div>
+        
+    <?php } ?>
+
 </section>
 <section>
     <div class="container mensagem">
@@ -82,22 +110,6 @@ $result2 = mysqli_query($conexao, $consultaMuseu);
         <?php } ?>
     </div>
 </section>
-<footer>
-    <div class="d-flex justify-content-around">
-        <div>
-            <h3>Museu</h3>
-            <p>Horario: 09:00 - 18:00</p>
-        </div>
-        <div>
-            <h3>Links</h3>
-            <a href="#">Home</a>
-        </div>
-        <div>
-            <h3>Membros</h3>
-            <a href="#">Ana</a>
-        </div>
-    </div>
-</footer>
-</body>
-
-</html>
+<?php
+    include("rodape.php");
+?>

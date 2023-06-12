@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
             $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
 
             // Prepare a consulta SQL
-            $query = "INSERT INTO items (imagem, texto,titulo,autor) VALUES (?, ?,?,?)";
+            $query = "INSERT INTO items (imagem, texto,titulo,autor) VALUES (?, ?, ?, ?)";
 
             // Crie uma declaração preparada
             $stmt = mysqli_prepare($conexao, $query);
@@ -42,4 +42,12 @@ if (isset($_POST['submit'])) {
     } else {
         echo 'Por favor, preencha todos os campos.';
     }
+
+    
+    header('Location: index.php');
+    exit();
+
+
+
+
 }

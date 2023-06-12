@@ -8,13 +8,15 @@
     <title>Sistema de Login - PHP + MySQL - Museu</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="./verificar.js"></script>
 </head>
 
 <body>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="verificar.js"></script>
+    
 
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="index.php">
@@ -31,22 +33,22 @@
                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Mais.php">Obras</a>
+                    <a class="nav-link" href="#quadros">Obras</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Membros
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#grito">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="membros.php">Ver membros</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Funcionarios</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <?php
-                    if (include("gerente.php")) {
+                    $gerente = include("gerente.php");
+                    if ($gerente) {
                         echo '<a class="nav-link" href="#"  id="inserir" data-target="#ModalInserir" data-toggle="modal">Inserir</a>';
                     } else {
                         echo '<a class="nav-link  disabled " href="#">Desabilitado</a>';
@@ -97,7 +99,7 @@
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail">Nome usuario</label>
-                                                <input type="text" name="usuario" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter usuario" required>
+                                                <input type="text" name="usuario" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter usuario" pattern="[A-Za-z1-9]+" required>
                                                 <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu e-mail com mais ninguém.</small>
                                             </div>
                                         </div>
@@ -152,17 +154,23 @@
                                 unset($_SESSION['usuario_existe']);
                                 ?>
                                 <div class="box">
-                                    <form action="cadastrar.php" name="formcadastro" method="POST">
+                                    <form name="formcadastro" action="cadastrar.php" method="POST">
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputnome1">Nome</label>
-                                                <input type="text" name="nome" class="form-control" id="exampleInputnome1" aria-describedby="Nome" placeholder="Enter nome" pattern = "[A-Za-z]+" required>
+                                                <input type="text" name="nome" class="form-control" id="exampleInputnome1" aria-describedby="Nome" placeholder="Enter nome" pattern="[A-Za-z]+" required>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="form-group">
+                                                <label for="exampleInputsobrenome">Sobrenome</label>
+                                                <input type="text" name="sobrenome" class="form-control" id="exampleInputsobrenome" aria-describedby="Sobrenome" placeholder="Enter sobrenome" pattern="[A-Za-z]+" required>
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Nome usuario</label>
-                                                <input type="text" name="usuario1" class="form-control" id="exampleInputEmail1" aria-describedby="NomeUsuario" placeholder="Enter usuario" required>
+                                                <input type="text" name="usuario1" class="form-control" id="exampleInputEmail1" aria-describedby="NomeUsuario" placeholder="Enter usuario" pattern="[A-Za-z0-9]+" required>
                                             </div>
                                         </div>
 
@@ -171,6 +179,7 @@
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword">Senha</label>
                                                     <input type="password" name="senha1" class="form-control" id="exampleInputPassword" placeholder="Senha" required>
+                                                    <span id="span"></span>
                                                 </div>
                                             </div>
 
@@ -207,7 +216,7 @@
                                     <form method="POST" action="enviar.php" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="imagem">Imagem</label>
-                                            <input type="file" class="form-control-file" name="imagem" id="imagem1" accept = ".png, .jpeg" required>
+                                            <input type="file" class="form-control-file" name="imagem" id="imagem1" accept=".png, .jpeg" required>
                                         </div>
                                         <div>
                                             <label for="titulo">Titulo</label>
@@ -221,7 +230,7 @@
                                             <label for="texto">Texto</label>
                                             <textarea class="form-control" name="texto" id="texto1" required></textarea>
                                         </div>
-                                        
+
                                         <button type="submit" class="btn btn-primary" name="submit">Salvar</button>
                                     </form>
                                 </div>

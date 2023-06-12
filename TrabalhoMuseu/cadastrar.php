@@ -5,6 +5,7 @@
     $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
     $usuario = mysqli_real_escape_string($conexao, $_POST['usuario1']);
     $senha = mysqli_real_escape_string($conexao, $_POST['senha1']);
+    $sobrenome = mysqli_real_escape_string($conexao, $_POST['sobrenome']);
 
     $sql = "select count(*) as total from usuario where usuario = '$usuario'";
     $result = mysqli_query($conexao,$sql);
@@ -16,7 +17,7 @@
         exit;
     }
 
-    $sql = "INSERT INTO usuario(nome, usuario,senha,data_cadastro,usuario_gerente) VALUES('$nome','$usuario',md5('{$senha}'),NOW(),false)";
+    $sql = "INSERT INTO usuario(nome, usuario,senha,data_cadastro,usuario_gerente,sobrenome) VALUES('$nome','$usuario',md5('{$senha}'),NOW(),false, '$sobrenome')";
 
     if($conexao->query($sql)===true){
         $_SESSION['status_cadastro'] = true;
