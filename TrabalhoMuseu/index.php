@@ -78,8 +78,8 @@ $result2 = mysqli_query($conexao, $consultaMuseu);
                 <form class="validated" action="mensagem.php" method="POST">
                     <div class="mb-3">
                         <label for="Textarea" class="form-label">
-                            <input type="text" name="nome1" class="form-control f" id="exampleInputnome" aria-describedby="emailHelp" value="<?php echo $_SESSION['usuario']; ?>" disabled=""></label>
-                        <textarea class="form-control f" id="Textarea" name="textarea" placeholder="Deixe sua mensagem aqui" required></textarea>
+                            <input type="text" name="nome1" class="form-control f" style="background-color: rgba(218, 215, 215, 0.158); color:white;" id="exampleInputnome" aria-describedby="emailHelp" value="<?php echo $_SESSION['usuario']; ?>" disabled=""></label>
+                        <textarea class="form-control f" style="background-color: rgba(218, 215, 215, 0.158); color:white;" id="Textarea" name="textarea" placeholder="Deixe sua mensagem aqui" required></textarea>
                         <div class="invalid-feedback">
                             Please enter a message in the textarea.
                         </div>
@@ -92,7 +92,7 @@ $result2 = mysqli_query($conexao, $consultaMuseu);
         <?php endif; ?>
         <?php while ($dado = $result->fetch_array()) {
         ?>
-            <div class="card">
+            <div class="card" style="background-color: rgba(218, 215, 215, 0.158); color:white;">
                 <div class="card-body">
                     <div class="float-right"><?php
                                                 $dateString = $dado["data"];
